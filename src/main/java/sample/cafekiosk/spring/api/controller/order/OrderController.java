@@ -1,5 +1,6 @@
 package sample.cafekiosk.spring.api.controller.order;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/api/v1/orders/new")
-    public OrderResponse createOrder(@RequestBody OrderCreateRequest request) {
+    public OrderResponse createOrder(@Valid @RequestBody OrderCreateRequest request) {
         return orderService.createOrder(request, LocalDateTime.now());
     }
 }
