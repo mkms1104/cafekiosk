@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 import sample.cafekiosk.spring.client.mail.MailSendClient;
 import sample.cafekiosk.spring.domain.history.mail.MailSendHistory;
 import sample.cafekiosk.spring.domain.history.mail.MailSendHistoryRepository;
@@ -28,9 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static sample.cafekiosk.spring.domain.product.ProductType.*;
 
-@ActiveProfiles("test")
-@SpringBootTest
-class OrderStaticsServiceTest {
+class OrderStaticsServiceTest extends IntegrationTestSupport {
     @Autowired
     private OrderStaticsService orderStaticsService;
 
@@ -45,9 +44,6 @@ class OrderStaticsServiceTest {
 
     @Autowired
     private MailSendHistoryRepository mailSendHistoryRepository;
-
-    @MockitoBean
-    private MailSendClient mailSendClient;
 
     @AfterEach
     void tearDown() {
